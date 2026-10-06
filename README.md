@@ -3,10 +3,19 @@
 Proyecto académico independiente: React Native + Expo + TypeScript, con API Node.js
 y base MySQL/MariaDB local mediante XAMPP, WAMP o LAMP.
 
-> Estado: **seis partes documentadas y cierre operativo en curso**, frontend 0.5.2.
-> Backend 0.3.0; XAMPP habitual configurado, login y bienvenida con props comprobados.
+> Estado: **seis partes documentadas y registro real agregado**, frontend 0.6.0.
+> Backend 0.4.0; XAMPP habitual configurado, registro/login/bienvenida comprobados en web.
 > GitHub publicado en main/develop. Pendientes: confirmar pruebas nativas y completar hosting.
 > Los proyectos 1 y 2 no se modifican.
+
+## Ampliaciones actuales
+
+- Login: **¿No tenés una cuenta? → Crear cuenta**, con el mismo diseño violeta/rosa.
+- [Registro real](docs/registration.md): validación, bcrypt, rol student y pruebas.
+- [Hosting Render/Aiven](docs/hosting.md): plantilla gratuita y configuración sin secretos.
+- Ingreso previo en iPhone confirmado por el usuario; registro nuevo todavía pendiente.
+- Base local existente: enable_registration.sql ya aplicado en esta PC.
+- Sin JWT, recuperación ni sesión permanente añadidos.
 
 ## Documentación de entrega
 
@@ -89,6 +98,7 @@ proyecto-3-acceso-usuarios/
 ├── app/
 │   ├── _layout.tsx
 │   ├── index.tsx
+│   ├── register.tsx
 │   └── welcome.tsx
 ├── src/
 │   ├── components/
@@ -102,15 +112,18 @@ proyecto-3-acceso-usuarios/
 │   │   │   ├── ScrollToTopButton.tsx
 │   │   │   └── ThemeToggleButton.tsx
 │   │   ├── molecules/
+│   │   │   ├── FormNotice.tsx
 │   │   │   ├── BrandHeader.tsx
 │   │   │   ├── InfoRow.tsx
 │   │   │   ├── TextField.tsx
 │   │   │   └── UserDetailRow.tsx
 │   │   └── organisms/
 │   │       ├── LoginForm.tsx
+│   │       ├── RegistrationForm.tsx
 │   │       └── ScreenShell.tsx
 │   ├── pages/
 │   │   ├── LoginPage.tsx
+│   │   ├── RegisterPage.tsx
 │   │   └── WelcomePage.tsx
 │   ├── services/
 │   │   ├── apiConfig.ts
@@ -120,6 +133,7 @@ proyecto-3-acceso-usuarios/
 │   │   ├── useBreakpoint.ts
 │   │   ├── useKeyboardVisible.ts
 │   │   ├── useLoginForm.ts
+│   │   ├── useRegistrationForm.ts
 │   │   ├── useReducedMotion.ts
 │   │   ├── useScrollToTop.ts
 │   │   └── useTheme.ts
@@ -164,7 +178,9 @@ proyecto-3-acceso-usuarios/
 │   │   ├── corsMiddleware.ts
 │   │   ├── errorHandler.ts
 │   │   ├── loginRateLimiter.ts
-│   │   └── validateLogin.ts
+│   │   ├── registrationRateLimiter.ts
+│   │   ├── validateLogin.ts
+│   │   └── validateRegistration.ts
 │   ├── config/
 │   │   ├── database.ts
 │   │   ├── environment.ts
@@ -184,6 +200,7 @@ proyecto-3-acceso-usuarios/
 │   │   ├── schema.sql
 │   │   ├── seed.sql
 │   │   ├── create_app_user.sql
+│   │   ├── enable_registration.sql
 │   │   └── queries.sql
 │   ├── app.ts
 │   ├── server.ts
@@ -208,18 +225,24 @@ proyecto-3-acceso-usuarios/
 │   ├── delivery.md
 │   ├── operations.md
 │   ├── security.md
+│   ├── registration.md
+│   ├── hosting.md
 │   └── screenshots/
 │       ├── login-final-oscuro.png
 │       ├── login-escritorio-claro.png
 │       ├── bienvenida-movil.png
 │       ├── bienvenida-escritorio-claro.png
 │       ├── bienvenida-xampp-real.png
+│       ├── registro-oscuro.png
+│       ├── registro-claro.png
+│       ├── cuenta-creada.png
 │       ├── login-cargando.png
 │       └── login-timeout.png
 ├── .env
 ├── .env.example
 ├── .gitignore
 ├── .gitattributes
+├── render.yaml
 ├── .prettierrc.json
 ├── .prettierignore
 ├── app.json
@@ -233,7 +256,7 @@ proyecto-3-acceso-usuarios/
 ```
 
 welcome.tsx valida el usuario en memoria y entrega props a WelcomePage; sin usuario
-redirige al login. LoginForm y las dos vistas completas ya están conectados.
+redirige al login. LoginForm y RegistrationForm conectan las tres vistas completas.
 
 ## Requisitos y XAMPP en Windows
 
@@ -627,8 +650,8 @@ Convenciones:
 - main: versiones entregables; develop: integración; feature/*: cambios pequeños.
 - feat:, fix:, docs:, refactor:, style: y chore: para commits descriptivos.
 - SemVer: 0.1.0 setup, 0.2.0 SQL, 0.3.0 backend, 0.4.0 frontend base, 0.5.0 pantallas
-  y 0.5.1 documentación, 0.5.2 revisión operativa y de dependencias;
-  1.0.0 al verificar la entrega. El paquete backend conserva 0.3.0.
+  y 0.5.1 documentación, 0.5.2 revisión operativa, 0.6.0 registro y hosting preparado;
+  1.0.0 al verificar la entrega. El backend actual es 0.4.0.
 - Versionar package-lock.json y .env.example; nunca .env, node_modules/ ni dist/.
 - Revisar git status y git diff --cached antes de publicar cualquier cambio.
 
@@ -644,7 +667,7 @@ El destino GitHub existe; no se creó ninguna etiqueta ni release.
 6. Actualizar CHANGELOG/documentación y revisar secretos antes de una pull request.
 
 No usar contraseñas reales en issues/capturas, modificar proyectos 1/2 ni forzar
-versiones incompatibles de Expo. Acordar alcance antes de añadir registro/JWT.
+versiones incompatibles de Expo. Registro fue autorizado; JWT sigue fuera del alcance.
 
 ## Riesgos y problemas frecuentes
 

@@ -122,8 +122,8 @@ Finalmente clonar en otra carpeta, instalar con npm ci y seguir el README.
 
 ## SemVer y CHANGELOG
 
-- Frontend actual: **0.5.2**, revisión operativa y de dependencias de la integración 0.5.0.
-- Backend actual: **0.3.0**, API sin cambios en las partes de frontend.
+- Frontend actual: **0.6.0**, registro solicitado y preparación para hosting.
+- Backend actual: **0.4.0**, registro, readiness y configuración TLS.
 - 0.x indica desarrollo previo a la entrega validada; no prometer estabilidad pública.
 - Para una API pública estable, SemVer distingue parche compatible, funcionalidad
   compatible y cambio incompatible. Documentar cambios en vez de subir versiones

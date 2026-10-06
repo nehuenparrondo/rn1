@@ -10,7 +10,7 @@ export const loginRateLimiter = rateLimit({
   limit: environment.loginRateLimit.maximum,
   standardHeaders: 'draft-8',
   legacyHeaders: false,
-  // La app no confía en proxies: headers reenviados arbitrarios no cambian la IP.
+  // Por defecto no se confía en proxies; el hosting puede habilitar un único salto.
   validate: { xForwardedForHeader: false },
   handler(_request, response) {
     response.status(429).json({

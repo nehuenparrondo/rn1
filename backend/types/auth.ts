@@ -4,6 +4,10 @@ export interface LoginRequest {
   password: string;
 }
 
+export interface RegistrationRequest extends LoginRequest {
+  name: string;
+}
+
 export interface PublicUser {
   id: number;
   name: string;
@@ -13,6 +17,7 @@ export interface PublicUser {
 }
 
 export interface ValidationErrors {
+  name?: string;
   email?: string;
   password?: string;
 }
@@ -26,6 +31,9 @@ export interface ErrorResponse {
 export type LoginResponse =
   { success: true; message: string; user: PublicUser } | ErrorResponse;
 
+export type RegistrationResponse = { success: true; message: string } | ErrorResponse;
+
 export interface AuthLocals {
   loginRequest?: LoginRequest;
+  registrationRequest?: RegistrationRequest;
 }

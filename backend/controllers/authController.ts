@@ -3,13 +3,31 @@ import bcrypt from 'bcrypt';
 import type { RequestHandler } from 'express';
 
 import { DUMMY_PASSWORD_HASH } from '../config/password.js';
+import { environment } from '../config/environment.js';
 import {
   INTERNAL_ERROR_MESSAGE,
   INVALID_CREDENTIALS_MESSAGE,
 } from '../constants/auth.js';
-import { findUserByEmail, recordLoginAttempt } from '../models/userModel.js';
-import type { AuthLocals, LoginResponse } from '../types/auth.js';
+import { createUser, findUserByEmail, recordLoginAttempt } from '../models/userModel.js';
+import type { AuthLocals, LoginResponse, RegistrationResponse } from '../types/auth.js';
 import { HttpError } from '../utils/HttpError.js';
+
+export const register: RequestHandler<
+  Record<string, string>,
+  RegistrationResponse,
+  unknown,
+  Record<string, unknown>,
+  AuthLocals
+> = async (_request, response) => {
+  const credentials = response.locals.registrationRequest;
+  if (!credentials) throw new HttpError(500, INTERNAL_ERROR_MESSAGE);
+  const passwordHash = await bcrypt.hash(credentials.password, environment.bcryptRounds);
+  await createUser(credentials.name, credentials.email, passwordHash);
+  response.status(201).json({
+    success: true,
+    message: 'Cuenta creada. Ya podés ingresar.',
+  });
+};
 
 export const login: RequestHandler<
   Record<string, string>,

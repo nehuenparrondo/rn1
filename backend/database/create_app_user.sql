@@ -42,6 +42,8 @@ BEGIN
     ON np_user_access.users TO 'np_login_app'@'127.0.0.1';
   GRANT SELECT (id, code, name)
     ON np_user_access.roles TO 'np_login_app'@'127.0.0.1';
+  GRANT INSERT (role_id, name, email, password_hash)
+    ON np_user_access.users TO 'np_login_app'@'127.0.0.1';
   GRANT SELECT (user_id, success, attempted_at)
     ON np_user_access.login_logs TO 'np_login_app'@'127.0.0.1';
   GRANT INSERT (user_id, attempted_email, success, attempted_at)
@@ -56,5 +58,5 @@ DELIMITER ;
 CALL provisionAppUser();
 DROP PROCEDURE provisionAppUser;
 
--- Sin privilegios de INSERT en users, UPDATE, DELETE, DROP, ALTER ni GRANT OPTION.
+-- INSERT en users limitado al registro; sin UPDATE, DELETE, DROP, ALTER ni GRANT OPTION.
 -- No usar IF NOT EXISTS en CREATE USER: una cuenta preexistente debe revisarse.

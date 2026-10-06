@@ -4,7 +4,11 @@ import {
   MAX_PASSWORD_BYTES,
   MIN_PASSWORD_LENGTH,
 } from '../constants/auth.js';
-import type { LoginRequest, ValidationErrors } from '../types/auth.js';
+import type {
+  LoginRequest,
+  RegistrationRequest,
+  ValidationErrors,
+} from '../types/auth.js';
 
 export function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -62,4 +66,21 @@ export function validateLoginData(body: Record<string, unknown>): {
   }
 
   return { data: { email, password }, errors };
+}
+
+export function validateRegistrationData(body: Record<string, unknown>): {
+  data: RegistrationRequest;
+  errors: ValidationErrors;
+} {
+  const { data, errors } = validateLoginData(body);
+  const name = typeof body.name === 'string' ? body.name.trim() : '';
+  if (!name) errors.name = 'Ingresá tu nombre.';
+  else if (
+    name.length > 100 ||
+    Array.from(name).some(
+      (character) => character.charCodeAt(0) < 32 || character.charCodeAt(0) === 127,
+    )
+  )
+    errors.name = 'Usá un nombre de hasta 100 caracteres, sin caracteres de control.';
+  return { data: { ...data, name }, errors };
 }

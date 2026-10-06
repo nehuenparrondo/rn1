@@ -5,7 +5,7 @@ import {
   MIN_PASSWORD_LENGTH,
 } from '@/constants/app';
 import { MESSAGES } from '@/constants/messages';
-import type { LoginRequest, ValidationErrors } from '@/types/auth';
+import type { LoginRequest, RegistrationValues, ValidationErrors } from '@/types/auth';
 
 export function normalizeEmail(email: string) {
   return email.trim().toLowerCase();
@@ -57,5 +57,22 @@ export function validateLogin(credentials: LoginRequest): ValidationErrors {
     errors.password = MESSAGES.passwordShort;
   else if (getUtf8ByteLength(credentials.password) > MAX_PASSWORD_BYTES)
     errors.password = MESSAGES.passwordLong;
+  return errors;
+}
+
+export function validateRegistration(values: RegistrationValues): ValidationErrors {
+  const errors = validateLogin(values);
+  const name = values.name.trim();
+  if (!name) errors.name = MESSAGES.nameRequired;
+  else if (
+    name.length > 100 ||
+    Array.from(name).some(
+      (character) => character.charCodeAt(0) < 32 || character.charCodeAt(0) === 127,
+    )
+  )
+    errors.name = MESSAGES.nameInvalid;
+  if (!values.confirmPassword) errors.confirmPassword = MESSAGES.confirmationRequired;
+  else if (values.confirmPassword !== values.password)
+    errors.confirmPassword = MESSAGES.confirmationMismatch;
   return errors;
 }

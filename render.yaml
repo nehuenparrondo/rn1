@@ -1,0 +1,45 @@
+# Plantilla gratuita; completar variables privadas solo en Render, nunca en Git.
+services:
+  - type: web
+    name: np-access-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/ready
+    envVars:
+      - key: NODE_VERSION
+        value: 24.15.0
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: TRUST_PROXY_HOPS
+        value: '1'
+      - key: DB_SSL
+        value: 'true'
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: DB_NAME
+        value: np_user_access
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_SSL_CA
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+  - type: web
+    name: np-access-web
+    runtime: static
+    buildCommand: npm ci --include=dev && npm run build:web
+    staticPublishPath: dist
+    envVars:
+      - key: NODE_VERSION
+        value: 24.15.0
+      - key: EXPO_PUBLIC_API_URL
+        sync: false

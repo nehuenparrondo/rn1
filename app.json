@@ -2,7 +2,7 @@
   "expo": {
     "name": "Acceso de usuarios · NP",
     "slug": "proyecto-3-acceso-usuarios",
-    "version": "0.5.2",
+    "version": "0.6.0",
     "scheme": "np-user-access",
     "orientation": "default",
     "icon": "./assets/icon.png",

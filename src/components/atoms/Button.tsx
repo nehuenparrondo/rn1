@@ -14,6 +14,7 @@ interface ButtonProps {
   label: string;
   onPress: PressableProps['onPress'];
   loading?: boolean;
+  loadingLabel?: string;
   disabled?: boolean;
   variant?: 'primary' | 'secondary';
   accessibilityLabel?: string;
@@ -22,6 +23,7 @@ export function Button({
   label,
   onPress,
   loading = false,
+  loadingLabel = 'Ingresando…',
   disabled = false,
   variant = 'primary',
   accessibilityLabel,
@@ -47,11 +49,9 @@ export function Button({
         pressed && styles.pressed,
       ]}
     >
-      {loading && (
-        <ActivityIndicator color={color} accessibilityLabel="Consultando la API" />
-      )}
+      {loading && <ActivityIndicator color={color} accessibilityLabel={loadingLabel} />}
       <Text style={[TYPOGRAPHY.body, styles.label, { color }]}>
-        {loading ? 'Ingresando…' : label}
+        {loading ? loadingLabel : label}
       </Text>
     </Pressable>
   );

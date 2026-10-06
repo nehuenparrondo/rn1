@@ -1,5 +1,6 @@
 // backend/config/environment.ts — Valida configuración sin mostrar valores secretos.
 import 'dotenv/config';
+import { X509Certificate } from 'node:crypto';
 
 function readInteger(
   name: string,
@@ -28,6 +29,20 @@ function readText(name: string, defaultValue: string) {
     throw new Error(name + ' no puede estar vacío.');
   }
   return value;
+}
+
+function readDatabaseSsl() {
+  const enabled = process.env.DB_SSL ?? 'false';
+  if (!['true', 'false'].includes(enabled))
+    throw new Error('DB_SSL debe ser true o false.');
+  if (enabled === 'false') return undefined;
+  const ca = (process.env.DB_SSL_CA ?? '').replace(/\\n/g, '\n').trim();
+  try {
+    if (!new X509Certificate(ca).ca) throw new Error();
+  } catch {
+    throw new Error('Configurá DB_SSL_CA con el certificado CA PEM del proveedor.');
+  }
+  return { ca, rejectUnauthorized: true, verifyIdentity: true };
 }
 
 const databaseUser = readText('DB_USER', 'np_login_app');
@@ -84,6 +99,7 @@ export const environment = {
   host: readText('HOST', '0.0.0.0'),
   port: readInteger('PORT', 3000, 1, 65535),
   corsOrigins,
+  trustProxyHops: readInteger('TRUST_PROXY_HOPS', 0, 0, 1),
   database: {
     host: readText('DB_HOST', '127.0.0.1'),
     port: readInteger('DB_PORT', 3306, 1, 65535),
@@ -91,10 +107,15 @@ export const environment = {
     user: databaseUser,
     password: databasePassword,
     timeoutMs: readInteger('DB_TIMEOUT_MS', 5000, 1000, 30000),
+    ssl: readDatabaseSsl(),
   },
   loginRateLimit: {
     windowMs: readInteger('LOGIN_RATE_LIMIT_WINDOW_MS', 900000, 1000, 3600000),
     maximum: readInteger('LOGIN_RATE_LIMIT_MAX', 10, 1, 1000),
+  },
+  registrationRateLimit: {
+    windowMs: readInteger('REGISTER_RATE_LIMIT_WINDOW_MS', 900000, 1000, 3600000),
+    maximum: readInteger('REGISTER_RATE_LIMIT_MAX', 5, 1, 100),
   },
   bcryptRounds: readInteger('BCRYPT_ROUNDS', 12, 10, 14),
 };

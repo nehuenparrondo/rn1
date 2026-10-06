@@ -1,7 +1,8 @@
 # Revisión de dependencias y límites de seguridad
 
 Revisión del 5 de octubre de 2026 sobre Expo SDK 57, sin downgrades forzados.
-Backend 0.3.0: npm audit no reporta vulnerabilidades. Frontend 0.5.2: **22 avisos**
+Auditoría repetida para backend 0.4.0 y frontend 0.6.0: backend 0;
+frontend **22 avisos**
 (3 moderados y 19 altos), frente a 29 de la revisión documental anterior.
 Los totales son paquetes afectados, no 22 vulnerabilidades independientes.
 
@@ -43,6 +44,8 @@ no es una solución aceptable para este trabajo.
 - Password SQL aleatorio guardado exclusivamente en backend/.env ignorado.
 - No se modificaron las bases auth_system_db, sistema_usuarios ni sus usuarios.
 - Cuenta del backend sin UPDATE/DELETE/DDL; restricción comprobada.
+- Registro: INSERT de cuatro columnas en users, rol student controlado por la API.
+- Base remota: TLS opcional con CA e identidad verificadas; nunca desactivar certificados.
 - MariaDB de esta ejecución escucha en 127.0.0.1, no en la LAN.
 - La API y Metro sí deben alcanzar el celular, solo por red privada.
 - No se desactivó el firewall ni se abrió MySQL/phpMyAdmin a Internet.

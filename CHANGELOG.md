@@ -8,6 +8,24 @@ Formato inspirado en Keep a Changelog. Versionado semántico.
 - Pendiente: avisos transitivos sin parche compatible y hosting, si se exige una URL pública.
 - No hay versión 1.0.0 ni release publicada hasta verificar esos pendientes.
 
+## [0.6.0] - 2026-10-06
+
+### Agregado
+
+- Crear cuenta desde login, con nombre, email y confirmación de contraseña.
+- Cuenta real en SQL, bcrypt 12 y rol student impuesto por la API.
+- Errores de campos, duplicados, spinner, cancelación y retorno al login.
+- FormNotice y transporte HTTP comunes; se conserva el diseño y Expo SDK 57.
+- Backend 0.4.0: registro, permisos INSERT acotados y límite independiente.
+- Preparación para Render/Aiven: TLS validado, readiness SQL y plantilla Free.
+
+### Verificado
+
+- 39 comprobaciones backend, 22 frontend y 53 regresiones anteriores.
+- Registro y login de cuenta ficticia contra XAMPP habitual en navegador.
+- Usuario confirmó el ingreso previo del proyecto 3 en iPhone.
+- Hosting y registro nuevo en iPhone todavía no se declaran completados.
+
 ## [0.5.2] - 2026-10-05
 
 ### Corregido

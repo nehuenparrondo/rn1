@@ -10,4 +10,4 @@ export const FLOATING_BUTTON_SIZE = 56;
 export const FLOATING_BUTTON_GAP = 12;
 export const FLOATING_EDGE = 16;
 export const FLOATING_CONTENT_SPACE = 160;
-export const ROUTES = { login: '/', welcome: '/welcome' } as const;
+export const ROUTES = { login: '/', register: '/register', welcome: '/welcome' } as const;

@@ -3,6 +3,8 @@ import type { ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 
 import { withDatabaseConnection } from '../config/database.js';
 import { environment } from '../config/environment.js';
+import { HttpError } from '../utils/HttpError.js';
+import { isRecord } from '../utils/validation.js';
 
 interface AuthUserRow extends RowDataPacket {
   id: number;
@@ -22,6 +24,36 @@ const FIND_USER_SQL = [
   'roles.code AS role FROM users INNER JOIN roles ON roles.id = users.role_id',
   'WHERE users.email = ? LIMIT 1',
 ].join(' ');
+
+export async function createUser(
+  name: string,
+  email: string,
+  passwordHash: string,
+): Promise<void> {
+  await withDatabaseConnection(async (connection) => {
+    try {
+      const [result] = await connection.execute<ResultSetHeader>(
+        {
+          sql: 'INSERT INTO users (role_id, name, email, password_hash) SELECT id, ?, ?, ? FROM roles WHERE code = ?',
+          timeout: environment.database.timeoutMs,
+        },
+        [name, email, passwordHash, 'student'],
+      );
+      if (result.affectedRows !== 1)
+        throw new HttpError(
+          500,
+          'No se pudo completar la solicitud. Intentá nuevamente.',
+        );
+    } catch (error) {
+      if (isRecord(error) && error.code === 'ER_DUP_ENTRY') {
+        throw new HttpError(409, 'Ya existe una cuenta con este email.', {
+          email: 'Ya existe una cuenta con este email. Ingresá con tu contraseña.',
+        });
+      }
+      throw error;
+    }
+  });
+}
 
 export async function findUserByEmail(email: string): Promise<AuthUserRow | null> {
   return withDatabaseConnection(async (connection) => {

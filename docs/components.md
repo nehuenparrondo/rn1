@@ -47,13 +47,13 @@ se intenta desplazar una pantalla distinta.
 
 ## Pages y rutas
 
-| Archivo         | Entrada                                            | Responsabilidad                                                                                      |
-| --------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| LoginPage       | Sin props                                          | Componer presentación y LoginForm. Apilado en móvil/tablet y dividido desde 1100 puntos.             |
-| WelcomePage     | WelcomePageProps: user: User, onLogout: () => void | Renderizar los datos públicos recibidos por props y acciones reales. No obtiene user de AuthContext. |
-| app/index.tsx   | Usuario del contexto                               | Si parseUser valida el estado, redirigir; si no, mostrar LoginPage.                                  |
-| app/welcome.tsx | Usuario del contexto y router                      | Validar, redirigir sin usuario y entregar props. Coordinar signOut y router.replace.                 |
-| app/_layout.tsx | Providers globales                                 | Safe areas, ThemeProvider, AuthProvider, Stack, status bar y control flotante de tema.               |
+| Archivo         | Entrada                                            | Responsabilidad                                                                                                 |
+| --------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| LoginPage       | onRegister: () => void                             | Componer presentación, LoginForm y acceso a crear cuenta. Apilado en móvil/tablet y dividido desde 1100 puntos. |
+| WelcomePage     | WelcomePageProps: user: User, onLogout: () => void | Renderizar los datos públicos recibidos por props y acciones reales. No obtiene user de AuthContext.            |
+| app/index.tsx   | Usuario del contexto                               | Si parseUser valida el estado, redirigir; si no, mostrar LoginPage.                                             |
+| app/welcome.tsx | Usuario del contexto y router                      | Validar, redirigir sin usuario y entregar props. Coordinar signOut y router.replace.                            |
+| app/_layout.tsx | Providers globales                                 | Safe areas, ThemeProvider, AuthProvider, Stack, status bar y control flotante de tema.                          |
 
 **Expo Router no inyecta props arbitrarias a la ruta: WelcomeRoute adapta el
 estado compartido validado y lo pasa como props tipadas a WelcomePage.**
@@ -105,5 +105,8 @@ contexto global ni introducir efectos secundarios dentro del render.
 5. Añadir una ruta fina que adapte los datos y pase props.
 6. Repetir ambos temas, tamaños y estados de error en [el plan de pruebas](testing.md).
 
-No añadir un dashboard, registro o recuperación de contraseña por apariencia:
+Registro real agregado por solicitud expresa; detalles en [registration.md](registration.md).
+RegisterPage recibe onLogin; RegistrationForm usa useRegistrationForm y FormNotice.
+El transporte de registro comparte timeout/cancelación y valida respuestas desconocidas.
+No añadir un dashboard ni recuperación de contraseña por apariencia:
 no pertenecen a esta consigna y requerirían contratos reales.

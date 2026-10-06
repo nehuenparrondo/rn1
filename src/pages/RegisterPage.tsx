@@ -1,67 +1,48 @@
-// src/pages/LoginPage.tsx — Página de ingreso con layout dividido o apilado y formulario real.
+// Conserva el diseño violeta y rosa del login, adaptable a móvil y escritorio.
 import { StyleSheet, View } from 'react-native';
 import { AppText } from '@/components/atoms/AppText';
 import { Card } from '@/components/atoms/Card';
-import { Button } from '@/components/atoms/Button';
 import { EntranceView } from '@/components/atoms/EntranceView';
 import { BrandHeader } from '@/components/molecules/BrandHeader';
 import { InfoRow } from '@/components/molecules/InfoRow';
-import { LoginForm } from '@/components/organisms/LoginForm';
+import { RegistrationForm } from '@/components/organisms/RegistrationForm';
 import { ScreenShell } from '@/components/organisms/ScreenShell';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
-import { useAuth } from '@/hooks/useAuth';
-import type { LoginPageProps } from '@/types/auth';
 import { FORM_MAX_WIDTH } from '@/styles/breakpoints';
 import { SPACING } from '@/styles/spacing';
+import type { RegisterPageProps } from '@/types/auth';
 
-export function LoginPage({ onRegister }: LoginPageProps) {
+export function RegisterPage({ onLogin }: RegisterPageProps) {
   const { isDesktop, isMobile } = useBreakpoint();
-  const { isAuthenticating } = useAuth();
   return (
     <ScreenShell>
       <BrandHeader />
       <EntranceView style={[styles.body, isDesktop && styles.bodyWide]}>
         <View style={[styles.intro, isDesktop && styles.introWide]}>
           <AppText variant="eyebrow" tone="primary">
-            UN ESPACIO PARA VOS
+            TU PRIMER PASO
           </AppText>
           <AppText variant="title" style={isDesktop ? styles.heroTitle : undefined}>
-            Tu próximo paso empieza acá.
+            Un lugar para empezar.
           </AppText>
           <AppText tone="textSecondary">
-            Ingresá con tu cuenta para acceder a una bienvenida con tus datos.
+            Creá tu cuenta y después ingresá con tu email y contraseña.
           </AppText>
           {!isMobile && (
-            <View style={styles.features}>
-              <InfoRow
-                icon="shield-checkmark-outline"
-                title="Ingreso verificado"
-                description="Tus credenciales se validan contra la base de datos."
-              />
-              <InfoRow
-                icon="color-palette-outline"
-                title="A tu manera"
-                description="Modo claro u oscuro, en cualquier pantalla."
-              />
-            </View>
+            <InfoRow
+              icon="lock-closed-outline"
+              title="Tu contraseña, protegida"
+              description="Guardamos un hash seguro, nunca tu contraseña en texto plano."
+            />
           )}
         </View>
         <View style={styles.cardWidth}>
           <Card>
             <AppText variant="heading" accessibilityRole="header">
-              Ingresá a tu cuenta
+              Creá tu cuenta
             </AppText>
-            <AppText tone="textSecondary">Nos alegra verte de nuevo.</AppText>
-            <LoginForm />
-            <AppText variant="caption" tone="textSecondary">
-              ¿No tenés una cuenta?
-            </AppText>
-            <Button
-              label="Crear cuenta"
-              variant="secondary"
-              disabled={isAuthenticating}
-              onPress={onRegister}
-            />
+            <AppText tone="textSecondary">Completá tus datos para empezar.</AppText>
+            <RegistrationForm onLogin={onLogin} />
           </Card>
         </View>
       </EntranceView>
@@ -80,6 +61,5 @@ const styles = StyleSheet.create({
   intro: { width: '100%', maxWidth: FORM_MAX_WIDTH, gap: SPACING.lg },
   introWide: { flex: 1, minWidth: 0 },
   heroTitle: { fontSize: 48, lineHeight: 56 },
-  features: { gap: SPACING.xl, paddingTop: SPACING.xl },
   cardWidth: { width: '100%', maxWidth: FORM_MAX_WIDTH },
 });

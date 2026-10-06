@@ -1,4 +1,4 @@
-// src/components/organisms/ScreenShell.tsx — Safe areas, teclado y scroll reutilizables para ambas pantallas.
+// src/components/organisms/ScreenShell.tsx — Safe areas, teclado y scroll compartidos por todas las pantallas.
 import type { PropsWithChildren } from 'react';
 import {
   KeyboardAvoidingView,

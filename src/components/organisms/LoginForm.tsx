@@ -4,9 +4,9 @@ import { StyleSheet, TextInput, View } from 'react-native';
 import { AppText } from '@/components/atoms/AppText';
 import { Button } from '@/components/atoms/Button';
 import { TextField } from '@/components/molecules/TextField';
+import { FormNotice } from '@/components/molecules/FormNotice';
 import { useLoginForm } from '@/hooks/useLoginForm';
-import { useTheme } from '@/hooks/useTheme';
-import { RADIUS, SPACING } from '@/styles/spacing';
+import { SPACING } from '@/styles/spacing';
 import { validateLogin } from '@/utils/validation';
 
 export function LoginForm() {
@@ -24,7 +24,6 @@ export function LoginForm() {
   } = useLoginForm();
   const emailRef = useRef<TextInput>(null);
   const passwordRef = useRef<TextInput>(null);
-  const { theme } = useTheme();
   function handleSubmit() {
     if (isSubmitting) return;
     const validation = validateLogin({ email, password });
@@ -70,23 +69,7 @@ export function LoginForm() {
         onSubmitEditing={handleSubmit}
         onBlur={() => blurField('password')}
       />
-      {message && (
-        <View
-          accessibilityRole="alert"
-          accessibilityLiveRegion="polite"
-          style={[
-            styles.error,
-            {
-              backgroundColor: theme.colors.primarySoft,
-              borderColor: theme.colors.error,
-            },
-          ]}
-        >
-          <AppText variant="caption" tone="error">
-            {message}
-          </AppText>
-        </View>
-      )}
+      {message && <FormNotice message={message} />}
       <Button label="Ingresar" loading={isSubmitting} onPress={handleSubmit} />
       <AppText variant="caption" tone="textSecondary">
         Usá el email y la contraseña de una cuenta registrada. La API verificará el
@@ -97,5 +80,4 @@ export function LoginForm() {
 }
 const styles = StyleSheet.create({
   form: { gap: SPACING.xl, width: '100%' },
-  error: { borderWidth: 1, borderRadius: RADIUS.sm, padding: SPACING.md },
 });

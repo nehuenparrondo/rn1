@@ -1,7 +1,8 @@
 # Cierre operativo
 
 Registro de acciones posteriores a las seis partes documentales.
-Frontend 0.5.2; backend 0.3.0. Fecha local: 5 de octubre de 2026.
+Registro inicial: frontend 0.5.2; backend 0.3.0, 5 de octubre de 2026.
+Ampliación actual: frontend 0.6.0; backend 0.4.0, 6 de octubre de 2026.
 
 ## XAMPP habitual: configurado
 
@@ -33,7 +34,9 @@ Los archivos .env configurados quedan locales. Un clone/ZIP necesita sus propios
 
 El usuario confirmó tener iPhone disponible. Se entregó QR para
 exp://192.168.1.2:8083 y se solicitó comprobar health, ingreso, tema, scroll y salida.
-Esto no sustituye el resultado: **prueba iPhone pendiente de confirmación**.
+El usuario confirmó posteriormente que pudo ingresar al proyecto 3 en iPhone.
+Esto aprueba ese recorrido informado, no todos los casos de la matriz.
+Registro nuevo, teclado, accesibilidad, tema y scroll nativos siguen sin confirmar.
 Android sigue pendiente; no hay un teléfono/emulador Android verificado aquí.
 Los proyectos 1 y 2 probados anteriormente no validan este proyecto 3.
 
@@ -75,6 +78,9 @@ son bundles, no instalación nativa ni evidencia de una prueba en teléfonos.
 
 El usuario aún no tenía una cuenta. Se propone Render Free para API/web y Aiven
 Free MySQL, preservando Express y SQL. No existe todavía una URL de aplicación.
+El usuario confirmó inicio de sesión en ambas cuentas. Los paneles de Codex aún
+muestran login, por lo que no se declara acceso ni un despliegue.
+Se añadió TLS validado, readiness SQL y render.yaml; pasos en [hosting.md](hosting.md).
 No se contrató un plan ni se reemplazó MySQL por otra tecnología.
 La base XAMPP queda disponible para la evaluación local.
 
@@ -89,8 +95,18 @@ no se declara preparación para producción ni resolución de avisos sin parche.
 - [x] XAMPP habitual y contraseña privada local configurados.
 - [x] Login HTTP y flujo web con la base habitual.
 - [x] Dependencia corregida de forma acotada y avisos restantes revisados.
-- [ ] Ejecución y confirmación de pruebas iPhone.
+- [x] Ingreso en iPhone confirmado por el usuario.
+- [ ] Registro nuevo y matriz completa de pruebas iPhone.
 - [ ] Pruebas Android, accesibilidad nativa y casos completos.
 - [x] Push verificado a GitHub de main/develop.
 - [x] Reproducción completa desde clone, incluida API contra SQL habitual.
 - [ ] Hosting con cuentas gratuitas creadas por el usuario.
+
+## Registro agregado
+
+Ampliación expresamente solicitada: [registration.md](registration.md).
+Cuenta SQL local ampliada únicamente con INSERT de cuatro columnas en users.
+39 verificaciones backend y 22 frontend, más 53 regresiones previas.
+Flujo web real: registro ficticio → confirmación → login → bienvenida → logout.
+El usuario autorizó actualizar main/develop con los cambios y configuración pública.
+La subida de esta ampliación se marca completada solo tras verificar el push.

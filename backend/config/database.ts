@@ -19,6 +19,7 @@ export const databasePool = mysql.createPool({
   queueLimit: 20,
   connectTimeout: environment.database.timeoutMs,
   multipleStatements: false,
+  ssl: environment.database.ssl,
 });
 
 export async function withDatabaseConnection<Result>(

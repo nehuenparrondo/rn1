@@ -1,13 +1,13 @@
-// app/index.tsx — Muestra el formulario o redirige cuando la API ya validó al usuario.
+// La ruta mantiene la navegación fuera del formulario y redirige usuarios ya ingresados.
 import { Redirect, useRouter } from 'expo-router';
 import { ROUTES } from '@/constants/app';
 import { useAuth } from '@/hooks/useAuth';
-import { LoginPage } from '@/pages/LoginPage';
+import { RegisterPage } from '@/pages/RegisterPage';
 import { parseUser } from '@/utils/responseGuards';
 
-export default function LoginRoute() {
+export default function RegisterRoute() {
   const router = useRouter();
   const { user } = useAuth();
   if (parseUser(user)) return <Redirect href={ROUTES.welcome} />;
-  return <LoginPage onRegister={() => router.push(ROUTES.register)} />;
+  return <RegisterPage onLogin={() => router.replace(ROUTES.login)} />;
 }

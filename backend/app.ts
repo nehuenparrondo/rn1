@@ -1,6 +1,7 @@
 // backend/app.ts — Compone Express sin iniciar puertos ni depender de la interfaz.
 import express from 'express';
 import helmet from 'helmet';
+import { environment } from './config/environment.js';
 
 import { corsMiddleware } from './middlewares/corsMiddleware.js';
 import { errorHandler } from './middlewares/errorHandler.js';
@@ -10,7 +11,7 @@ import type { ErrorResponse } from './types/auth.js';
 
 export const app = express();
 app.disable('x-powered-by');
-app.set('trust proxy', false);
+app.set('trust proxy', environment.trustProxyHops === 1 ? 1 : false);
 app.use(helmet());
 app.use('/api', (_request, response, next) => {
   response.setHeader('Cache-Control', 'no-store');
