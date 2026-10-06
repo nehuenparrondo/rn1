@@ -14,6 +14,7 @@ Formato inspirado en Keep a Changelog. Versionado semántico.
 
 - Override acotado xcode/uuid 11.1.1 compatible con el generador de identificadores.
 - Reducción de 29 a 22 avisos frontend sin cambiar Expo SDK 57.
+- Política LF en Git para que los clones Windows mantengan el formato verificado.
 
 ### Operación
 
