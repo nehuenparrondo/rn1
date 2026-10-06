@@ -66,8 +66,9 @@ git branch -M main
 git switch -c develop
 ```
 
-No se modifica user.name/user.email automáticamente. Si Git pide identidad,
-configurar tus datos localmente en ese repositorio antes del commit.
+Para la publicación autorizada se configuró identidad solo en este repositorio,
+sin cambiar configuración global. En otra PC, configurar la identidad local
+si Git la solicita antes del commit.
 La guía de [ramas de Git](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 explica separación y fusión; main/develop son nuestra política de trabajo.
 
@@ -103,7 +104,7 @@ No usar push --force para solucionar un error de publicación.
 
 1. Elegir el nombre y visibilidad del repositorio; respetar las reglas académicas.
 2. Crear un repositorio vacío, sin README inicial que compita con el local.
-3. Copiar su URL real. No existe todavía una URL de entrega de este proyecto.
+3. Copiar su URL real. El destino publicado es https://github.com/nehuenparrondo/rn1.
 4. Con main y develop creadas, añadir el remoto y publicar:
 
 ```powershell

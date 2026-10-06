@@ -113,6 +113,10 @@ Los procesos aislados de la Parte 5 se detuvieron al terminar.
 - Health y login por LAN: respuestas 200; bienvenida y logout observados en web.
 - Expo Doctor: 21/21 comprobaciones correctas tras el override acotado de uuid.
 - Backend: lint, tipos, formato y compilación correctos.
+- Clone limpio publicado: npm ci, check de ambos paquetes y exportación web/Android/iOS.
+- API compilada del clone contra XAMPP habitual: health 200, validación 400,
+  credenciales incorrectas 401 y credenciales ficticias correctas 200.
+- La API temporal del clone se detuvo; no se copió configuración privada a esa carpeta.
 - Las verificaciones nativas y de publicación se registran en
   [operations.md](operations.md), sin dar por aprobados dispositivos no probados.
 

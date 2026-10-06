@@ -5,7 +5,7 @@ y base MySQL/MariaDB local mediante XAMPP, WAMP o LAMP.
 
 > Estado: **seis partes documentadas y cierre operativo en curso**, frontend 0.5.2.
 > Backend 0.3.0; XAMPP habitual configurado, login y bienvenida con props comprobados.
-> Pendientes: confirmar pruebas nativas, publicar GitHub y completar hosting.
+> GitHub publicado en main/develop. Pendientes: confirmar pruebas nativas y completar hosting.
 > Los proyectos 1 y 2 no se modifican.
 
 ## Documentación de entrega
@@ -73,7 +73,9 @@ Se ejecutó MariaDB 10.4.32; no se comprobó MySQL 8 por separado.
 - [x] Parte 6: documentación, guía Git, rúbrica, plan de pruebas y defensa oral.
 - [x] Entrega documental: capturas web reales y exclusión de archivos privados.
 - [x] Entrega operativa local: XAMPP habitual y cuenta limitada configurados.
-- [ ] Entrega restante: dispositivos, clon limpio, GitHub y hosting.
+- [x] Código publicado en GitHub con main/develop, sin secretos locales.
+- [x] Reproducción desde clone limpio: instalación, verificaciones, exportación y API.
+- [ ] Entrega restante: confirmar dispositivos y hosting.
 
 La instalación de una dependencia no significa que su funcionalidad ya esté implementada.
 Las guías de las partes previas conservan el estado histórico de cada etapa.
@@ -211,11 +213,13 @@ proyecto-3-acceso-usuarios/
 │       ├── login-escritorio-claro.png
 │       ├── bienvenida-movil.png
 │       ├── bienvenida-escritorio-claro.png
+│       ├── bienvenida-xampp-real.png
 │       ├── login-cargando.png
 │       └── login-timeout.png
 ├── .env
 ├── .env.example
 ├── .gitignore
+├── .gitattributes
 ├── .prettierrc.json
 ├── .prettierignore
 ├── app.json
@@ -600,7 +604,7 @@ Validación final de la Parte 6, 5 de octubre de 2026:
 - Expo compatible; expo-doctor 21/21.
 - 41 enlaces locales válidos en 12 Markdown; seis capturas web integradas.
 - Versiones coherentes y código propio revisado: 62 archivos TypeScript sin any.
-- Auditoría actual: backend 0; frontend 29 avisos (10 moderados y 19 altos).
+- Auditoría al cerrar la Parte 6: backend 0; frontend 29 avisos (10 moderados y 19 altos).
   No se aplicaron fixes forzados que puedan romper Expo.
 - No se ejecutaron de nuevo los logins SQL en esta revisión documental:
   las pruebas de integración son las registradas en la Parte 5.
@@ -611,8 +615,9 @@ Validación final de la Parte 6, 5 de octubre de 2026:
 Destino autorizado: [nehuenparrondo/rn1](https://github.com/nehuenparrondo/rn1).
 El registro actualizado de publicación está en docs/operations.md.
 
-Repositorio local en main y remoto origin configurado. Se está verificando la
-publicación autorizada; los archivos .env privados quedan excluidos.
+Repositorio publicado en main/develop, con remoto origin y push verificado.
+Los archivos .env privados quedan excluidos. La reproducción limpia y sus
+resultados se registran en [docs/operations.md](docs/operations.md).
 
 Guía paso a paso en [docs/git-guide.md](docs/git-guide.md); los comandos son
 instrucciones para cuando decidas publicar, no operaciones ejecutadas.
@@ -685,7 +690,9 @@ documentados como mejora, no implementados a escondidas.
 - [x] Documentación, Git, rúbrica, pruebas y defensa: Parte 6.
 - [x] Configuración de XAMPP habitual y login real comprobados.
 - [ ] Pruebas del proyecto 3 en dispositivos reales.
-- [ ] Historial Git, GitHub, clon limpio y hosting si se exige.
+- [x] Historial Git y ramas main/develop publicados sin secretos.
+- [x] Clone limpio: verificaciones, exportación web/Android/iOS y login SQL real.
+- [ ] Hosting si se exige una URL pública.
 
 La matriz detallada está en [docs/rubric.md](docs/rubric.md).
 No se declara entrega 100% verificada ni preparación para producción.

@@ -4,7 +4,7 @@ Formato inspirado en Keep a Changelog. Versionado semántico.
 
 ## [Sin publicar]
 
-- Pendiente: confirmación de pruebas nativas y publicación verificada en GitHub.
+- Pendiente: confirmación de pruebas nativas.
 - Pendiente: avisos transitivos sin parche compatible y hosting, si se exige una URL pública.
 - No hay versión 1.0.0 ni release publicada hasta verificar esos pendientes.
 
@@ -21,8 +21,9 @@ Formato inspirado en Keep a Changelog. Versionado semántico.
 - Base habitual XAMPP provisionada con scripts públicos y cuenta SQL limitada.
 - Password aleatorio solo en backend/.env privado; otras bases/cuentas intactas.
 - Login y bienvenida comprobados con la instancia habitual, ya no solo aislada.
-- QR preparado para prueba iPhone y destino GitHub autorizado por el usuario.
+- QR preparado para prueba iPhone y código publicado en GitHub con main/develop.
 - Revisión de avisos sin parche y límites de publicación en docs/security.md.
+- Clone limpio verificado con instalación, lint, tipos, formato, exportación y API real.
 
 ## [0.5.1] - 2026-10-05
 

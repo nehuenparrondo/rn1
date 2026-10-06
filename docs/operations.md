@@ -43,7 +43,33 @@ Destino autorizado por el usuario:
 [nehuenparrondo/rn1](https://github.com/nehuenparrondo/rn1).
 El repositorio remoto estaba vacío al inspeccionarlo.
 El usuario autorizó primer commit, main/develop y publicación.
-La publicación se registra como completada únicamente después de verificar el push.
+Publicación completada y verificada mediante push, git ls-remote, API de GitHub
+y clone independiente. Las ramas main/develop apuntan al mismo código integrado.
+Primer commit: 4d03904. Corrección de formato Windows: e0e6f09.
+Sin commits históricos inventados, etiquetas ni release 1.0.0.
+
+Se revisaron nombres y contenido de los 113 archivos iniciales antes de subirlos:
+sin .env privado, SQL local, node_modules, dist, tokens ni password SQL de esta PC.
+.env.example y las credenciales ficticias del seed sí son públicas por diseño.
+La política .gitattributes conserva LF incluso con core.autocrlf de Windows.
+
+## Reproducción desde clone: comprobada
+
+Copia independiente obtenida de main, con Node 24.15.0 y npm 11.12.1:
+
+- npm ci en frontend y backend, sin modificar lockfiles.
+- npm run check en ambos: lint, TypeScript y formato correctos.
+- npm run build en backend y npm run build:all: web/Android/iOS exportados.
+- API compilada del clone iniciada temporalmente en localhost:3011.
+- Health 200, campos vacíos 400, password incorrecto 401 y login ficticio correcto 200.
+- Datos públicos y fecha SQL válida; sin password en respuesta.
+- Configuración privada pasada únicamente al proceso, sin copiar .env al clone.
+- Proceso de prueba detenido al terminar; API local para iPhone sigue en puerto 3000.
+- Auditorías del clone: backend 0; frontend 22 (3 moderados, 19 altos, 0 críticos).
+
+El primer clone detectó conversión CRLF de Windows; se corrigió la causa con
+.gitattributes y se verificó un nuevo clone con LF. Las exportaciones Android/iOS
+son bundles, no instalación nativa ni evidencia de una prueba en teléfonos.
 
 ## Hosting
 
@@ -65,5 +91,6 @@ no se declara preparación para producción ni resolución de avisos sin parche.
 - [x] Dependencia corregida de forma acotada y avisos restantes revisados.
 - [ ] Ejecución y confirmación de pruebas iPhone.
 - [ ] Pruebas Android, accesibilidad nativa y casos completos.
-- [ ] Push verificado a GitHub y reproducción desde clone.
+- [x] Push verificado a GitHub de main/develop.
+- [x] Reproducción completa desde clone, incluida API contra SQL habitual.
 - [ ] Hosting con cuentas gratuitas creadas por el usuario.
