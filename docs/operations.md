@@ -109,4 +109,11 @@ Cuenta SQL local ampliada únicamente con INSERT de cuatro columnas en users.
 39 verificaciones backend y 22 frontend, más 53 regresiones previas.
 Flujo web real: registro ficticio → confirmación → login → bienvenida → logout.
 El usuario autorizó actualizar main/develop con los cambios y configuración pública.
-La subida de esta ampliación se marca completada solo tras verificar el push.
+Publicación completada: commit 92f9027, verificado en main y develop remotos.
+La copia independiente se actualizó con avance rápido y se reinstalaron ambas
+dependencias mediante npm ci. Lint, TypeScript, formato y compilación backend
+correctos; exportaciones web/Android/iOS correctas, incluida la ruta de registro.
+La API compilada de esa copia también verificó el login contra SQL local,
+sin copiar configuración privada ni dejar el proceso de prueba en ejecución.
+Se repitieron las 39 verificaciones backend del registro, todas correctas.
+Esto no reemplaza la prueba del registro en iPhone ni un despliegue remoto.
