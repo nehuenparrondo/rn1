@@ -1,5 +1,10 @@
 # Plan de pruebas y resultados
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 Fecha del registro: **5 de octubre de 2026**. No confundir resultado observado,
 resultado esperado y prueba pendiente. El navegador con un viewport de iPhone
 no ejecuta iOS ni valida el teclado de Expo Go.

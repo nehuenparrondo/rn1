@@ -1,5 +1,10 @@
 # Parte 5 — Login y bienvenida conectados
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 > Documento de etapa: registra la integración 0.5.0. La revisión documental
 > 0.5.1 y checklist final están en delivery.md; la API no cambió.
 
@@ -13,11 +18,11 @@ El árbol completo del proyecto, incluido el backend sin cambios, está en READM
 Estos son los archivos actuales del frontend antes de los ejemplos de código:
 
 ```text
-app/
+frontend/app/
 ├── _layout.tsx
 ├── index.tsx
 └── welcome.tsx
-src/
+frontend/src/
 ├── components/
 │   ├── atoms/
 │   │   ├── AppText.tsx
@@ -128,19 +133,19 @@ no funcionalidades implementadas.
 
 ## Responsabilidades nuevas
 
-| Archivo             | Responsabilidad                                                   |
-| ------------------- | ----------------------------------------------------------------- |
-| app/index.tsx       | Mostrar el login o redirigir si hay usuario validado en memoria.  |
-| app/welcome.tsx     | Validar estado, pasar props y coordinar logout/navegación.        |
-| app/_layout.tsx     | Providers, tema global, status bar y transición de Stack.         |
-| LoginPage.tsx       | Componer intro y formulario; layout apilado o dividido.           |
-| LoginForm.tsx       | Inputs, foco, errores, botón y envío; no navegar ni ejecutar SQL. |
-| WelcomePage.tsx     | Presentar props y accesos rápidos reales.                         |
-| BrandHeader.tsx     | Identidad compartida sin una navegación ficticia.                 |
-| InfoRow.tsx         | Ícono y descripción flexible.                                     |
-| UserDetailRow.tsx   | Etiqueta y valor público seleccionable que puede envolver líneas. |
-| EntranceView.tsx    | Animación de entrada compatible con movimiento reducido.          |
-| userPresentation.ts | Formatear la fecha real en zona local y traducir roles conocidos. |
+| Archivo                  | Responsabilidad                                                   |
+| ------------------------ | ----------------------------------------------------------------- |
+| frontend/app/index.tsx   | Mostrar el login o redirigir si hay usuario validado en memoria.  |
+| frontend/app/welcome.tsx | Validar estado, pasar props y coordinar logout/navegación.        |
+| frontend/app/_layout.tsx | Providers, tema global, status bar y transición de Stack.         |
+| LoginPage.tsx            | Componer intro y formulario; layout apilado o dividido.           |
+| LoginForm.tsx            | Inputs, foco, errores, botón y envío; no navegar ni ejecutar SQL. |
+| WelcomePage.tsx          | Presentar props y accesos rápidos reales.                         |
+| BrandHeader.tsx          | Identidad compartida sin una navegación ficticia.                 |
+| InfoRow.tsx              | Ícono y descripción flexible.                                     |
+| UserDetailRow.tsx        | Etiqueta y valor público seleccionable que puede envolver líneas. |
+| EntranceView.tsx         | Animación de entrada compatible con movimiento reducido.          |
+| userPresentation.ts      | Formatear la fecha real en zona local y traducir roles conocidos. |
 
 Se reutilizan los estilos, hooks, servicio y componentes de la Parte 4.
 El backend mantiene su contrato y versión 0.3.0; frontend y app.json pasan a 0.5.0.

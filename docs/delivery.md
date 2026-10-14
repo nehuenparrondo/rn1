@@ -1,5 +1,10 @@
 # Parte 6 — Documentación y entrega
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 > Registro histórico del cierre documental 0.5.1. Las acciones posteriores,
 > incluida la configuración real de XAMPP, están en [operations.md](operations.md).
 
@@ -114,7 +119,7 @@ Estos comandos no configuran una contraseña SQL privada.
 ## Checklist final de archivos
 
 - [x] Proyecto propio y dos package.json/lockfiles.
-- [x] Rutas app/; src/ con Atomic Design, pages, hooks, context, services y tipos.
+- [x] Rutas frontend/app/; frontend/src/ con Atomic Design, pages, hooks, context, services y tipos.
 - [x] Backend organizado y schema/seed/permisos/queries públicos.
 - [x] .env.example en ambos lados y .gitignore para secretos/generados.
 - [x] README, CHANGELOG, guías, rúbrica y plan de pruebas.

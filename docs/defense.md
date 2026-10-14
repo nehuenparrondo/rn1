@@ -1,5 +1,10 @@
 # Guía para defender el proyecto
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 ## Presentación de un minuto
 
 “Desarrollé un acceso de usuarios con React Native, Expo y TypeScript. La página
@@ -20,7 +25,7 @@ en Android/iOS para este proyecto si esas verificaciones siguen pendientes.
 2. **Formulario:** mostrar validación de vacíos/email, visibilidad y foco.
 3. **API real:** entrar con student@np.test; explicar que no hay comparación
    de una contraseña fija en el frontend.
-4. **Props:** abrir app/welcome.tsx y src/types/auth.ts; señalar user y onLogout.
+4. **Props:** abrir frontend/app/welcome.tsx y frontend/src/types/auth.ts; señalar user y onLogout.
    Mostrar que WelcomePage renderiza desde sus argumentos, no desde la URL.
 5. **Usabilidad:** alternar tema, desplazar bienvenida y volver arriba.
 6. **Salida:** cerrar sesión, abrir /welcome sin usuario y comprobar la redirección.
@@ -40,7 +45,7 @@ La explicación se corresponde con [props en React](https://react.dev/learn/pass
 
 ### ¿Dónde cumplís “datos del usuario por props” si usás Expo Router?
 
-Router gestiona la ruta, no props arbitrarias. app/welcome.tsx lee el estado
+Router gestiona la ruta, no props arbitrarias. frontend/app/welcome.tsx lee el estado
 compartido, lo valida con parseUser y renderiza WelcomePage con user y onLogout.
 El contexto transporta el estado; la vista recibe los datos por props.
 
@@ -213,11 +218,11 @@ habitual ni se publicó GitHub/hosting. Los resultados están separados del plan
 
 ## Archivos para señalar sin memorizar todo
 
-- app/welcome.tsx y src/types/auth.ts: requisito de props.
-- src/components/organisms/LoginForm.tsx y hooks/useLoginForm.ts: interfaz/lógica.
-- src/services/authService.ts y utils/responseGuards.ts: red y confianza del JSON.
-- backend/controllers/authController.ts: comparación y respuesta pública.
-- backend/models/userModel.ts: SQL parametrizado y transacción.
+- frontend/app/welcome.tsx y frontend/src/types/auth.ts: requisito de props.
+- frontend/src/components/organisms/LoginForm.tsx y hooks/useLoginForm.ts: interfaz/lógica.
+- frontend/src/services/authService.ts y utils/responseGuards.ts: red y confianza del JSON.
+- backend/src/controllers/authController.ts: comparación y respuesta pública.
+- backend/src/models/userModel.ts: SQL parametrizado y transacción.
 - backend/database/schema.sql y docs/database.md: relaciones y normalización.
-- src/context/ThemeContext.tsx y hooks/useScrollToTop.ts: usabilidad.
+- frontend/src/context/ThemeContext.tsx y hooks/useScrollToTop.ts: usabilidad.
 - docs/rubric.md y docs/testing.md: evidencia y límites.

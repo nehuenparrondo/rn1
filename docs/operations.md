@@ -1,5 +1,10 @@
 # Cierre operativo
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 Registro de acciones posteriores a las seis partes documentales.
 Registro inicial: frontend 0.5.2; backend 0.3.0, 5 de octubre de 2026.
 Ampliación actual: frontend 0.6.0; backend 0.4.0, 6 de octubre de 2026.

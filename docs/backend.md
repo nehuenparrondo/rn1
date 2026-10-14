@@ -1,5 +1,10 @@
 # Parte 3 — Backend de acceso de usuarios
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 > Documento de etapa: describe el estado al cerrar la Parte 3. La interfaz ya se
 > conectó en Parte 5; el estado final está en README y delivery.md.
 
@@ -386,7 +391,7 @@ los datos públicos recibidos tras el login no son una prueba de identidad.
 - [Consultas preparadas de mysql2](https://sidorares.github.io/node-mysql2/docs/examples/queries/prepared-statements)
 - [bcrypt y límite de 72 bytes](https://github.com/kelektiv/node.bcrypt.js)
 - [Middleware CORS](https://github.com/expressjs/cors)
-- [Configuración de express-rate-limit](https://express-rate-limit.mintlify.app/reference/configuration)
+- [Configuración de express-rate-limit](https://express-rate-limit.mintlify.frontend/app/reference/configuration)
 
 Escribí **continuar** para la Parte 4: bases del frontend, sin saltar todavía
 a las pantallas de la Parte 5.

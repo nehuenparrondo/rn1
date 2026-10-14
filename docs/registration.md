@@ -1,5 +1,10 @@
 # Registro de cuentas — Frontend 0.6.0 / API 0.4.0
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 Ampliación solicitada por el usuario después de las seis partes originales.
 Se mantiene Expo SDK 57, TypeScript estricto, Atomic Design y diseño violeta/rosa.
 
@@ -18,7 +23,7 @@ La confirmación se usa solo en el dispositivo y no se envía al servidor.
 
 ## Archivos y responsabilidades
 
-- app/register.tsx: ruta fina, navegación y redirección si ya hay usuario en memoria.
+- frontend/app/register.tsx: ruta fina, navegación y redirección si ya hay usuario en memoria.
 - RegisterPage: presentación; recibe onLogin mediante props tipadas.
 - RegistrationForm: campos, foco, visibilidad, spinner, bloqueo y confirmación.
 - useRegistrationForm: validación, envío y cancelación al desmontar.

@@ -1,6 +1,11 @@
 # Componentes y contratos
 
-Catálogo del frontend actual. Las rutas están en app/ y las vistas en src/pages/;
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
+Catálogo del frontend actual. Las rutas están en frontend/app/ y las vistas en frontend/src/pages/;
 los archivos de Atomic Design no ejecutan SQL. Consultar el árbol completo en
 [README](../README.md) antes de los ejemplos.
 
@@ -17,7 +22,7 @@ los archivos de Atomic Design no ejecutan SQL. Consultar el árbol completo en
 | ThemeToggleButton | Sin props                                                                 | Lee useTheme y safe areas. Global en el layout, abajo a la derecha; se oculta con teclado nativo abierto.        |
 | ScrollToTopButton | visible, onPress                                                          | Fade de 180 ms; arriba del tema. Cuando está oculto no recibe toques ni foco accesible. No decide el umbral.     |
 
-Las constantes de posición están en src/constants/app.ts. La mayoría de medidas
+Las constantes de posición están en frontend/src/constants/app.ts. La mayoría de medidas
 son puntos de React Native, no una resolución física del dispositivo.
 StyleSheet.create contiene la estructura; las pequeñas variantes de tema y
 dimensiones se aplican en arrays de estilos, no en hojas CSS separadas.
@@ -47,13 +52,13 @@ se intenta desplazar una pantalla distinta.
 
 ## Pages y rutas
 
-| Archivo         | Entrada                                            | Responsabilidad                                                                                                 |
-| --------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| LoginPage       | onRegister: () => void                             | Componer presentación, LoginForm y acceso a crear cuenta. Apilado en móvil/tablet y dividido desde 1100 puntos. |
-| WelcomePage     | WelcomePageProps: user: User, onLogout: () => void | Renderizar los datos públicos recibidos por props y acciones reales. No obtiene user de AuthContext.            |
-| app/index.tsx   | Usuario del contexto                               | Si parseUser valida el estado, redirigir; si no, mostrar LoginPage.                                             |
-| app/welcome.tsx | Usuario del contexto y router                      | Validar, redirigir sin usuario y entregar props. Coordinar signOut y router.replace.                            |
-| app/_layout.tsx | Providers globales                                 | Safe areas, ThemeProvider, AuthProvider, Stack, status bar y control flotante de tema.                          |
+| Archivo                  | Entrada                                            | Responsabilidad                                                                                                 |
+| ------------------------ | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| LoginPage                | onRegister: () => void                             | Componer presentación, LoginForm y acceso a crear cuenta. Apilado en móvil/tablet y dividido desde 1100 puntos. |
+| WelcomePage              | WelcomePageProps: user: User, onLogout: () => void | Renderizar los datos públicos recibidos por props y acciones reales. No obtiene user de AuthContext.            |
+| frontend/app/index.tsx   | Usuario del contexto                               | Si parseUser valida el estado, redirigir; si no, mostrar LoginPage.                                             |
+| frontend/app/welcome.tsx | Usuario del contexto y router                      | Validar, redirigir sin usuario y entregar props. Coordinar signOut y router.replace.                            |
+| frontend/app/_layout.tsx | Providers globales                                 | Safe areas, ThemeProvider, AuthProvider, Stack, status bar y control flotante de tema.                          |
 
 **Expo Router no inyecta props arbitrarias a la ruta: WelcomeRoute adapta el
 estado compartido validado y lo pasa como props tipadas a WelcomePage.**

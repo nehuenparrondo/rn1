@@ -1,5 +1,10 @@
 # Checklist de la rúbrica
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 > Matriz del cierre documental. Estado operativo posterior actualizado en
 > [operations.md](operations.md); no confundir pendientes históricos con actuales.
 
@@ -12,7 +17,7 @@ No marcar ejecución nativa a partir de una exportación ni GitHub a partir de .
 | Estado | Requisito                                  | Evidencia / pendiente                                                                                           |
 | ------ | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
 | [x]    | Login → API → bienvenida                   | LoginForm/authService/authController/rutas; flujo web con Express/SQL real aislado.                             |
-| [x]    | Datos del usuario por props                | app/welcome.tsx valida el estado y pasa WelcomePageProps a la vista.                                            |
+| [x]    | Datos del usuario por props                | frontend/app/welcome.tsx valida el estado y pasa WelcomePageProps a la vista.                                   |
 | [ ]    | Sin errores/warnings en web, Android e iOS | Web y exportación correctos; falta ejecución del proyecto 3 en Expo Go Android/iOS.                             |
 | [x]    | URL configurable y conectividad explicada  | apiConfig, .env.example y README: localhost, 10.0.2.2, LAN y firewall.                                          |
 | [ ]    | Entorno habitual XAMPP funcionando         | MariaDB aislada comprobada; falta importar y configurar secreto privado habitual.                               |

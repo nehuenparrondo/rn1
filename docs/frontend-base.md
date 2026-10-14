@@ -1,5 +1,10 @@
 # Parte 4 — Bases del frontend
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 > Documento de etapa: describe la Parte 4. Las pantallas ya están conectadas;
 > consultar screens.md y delivery.md para la integración y entrega.
 
@@ -14,11 +19,11 @@ La vista actual sigue siendo provisional, pero ya utiliza los providers y el tem
 ## Árbol real antes de los ejemplos
 
 ```text
-app/
+frontend/app/
 ├── _layout.tsx
 ├── index.tsx
 └── welcome.tsx
-src/
+frontend/src/
 ├── components/
 │   ├── atoms/
 │   │   ├── AppText.tsx

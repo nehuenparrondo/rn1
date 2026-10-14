@@ -4,6 +4,18 @@ Formato inspirado en Keep a Changelog. Versionado semántico.
 
 ## [Sin publicar]
 
+### Corregido
+
+- Frontend React Native independiente en frontend/, con su propio src y paquetes.
+- Backend Node.js independiente en backend/, con su código en backend/src/.
+- Arranque, compilación, configuración y plantilla de despliegue adaptados.
+- Documentación en español de 69 módulos y del recorrido HTTP/SQL y las props.
+- Limpieza de carpetas antiguas, un recurso sin uso y caché obsoleta de la raíz.
+- Retirada del proyecto 2 por solicitud expresa, para dejar el repositorio del login.
+- Sin cambios de dependencias ni migraciones de la base existente.
+
+### Pendientes
+
 - Pendiente: confirmación de pruebas nativas.
 - Pendiente: avisos transitivos sin parche compatible y hosting, si se exige una URL pública.
 - No hay versión 1.0.0 ni release publicada hasta verificar esos pendientes.

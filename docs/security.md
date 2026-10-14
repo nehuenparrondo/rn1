@@ -1,5 +1,10 @@
 # Revisión de dependencias y límites de seguridad
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 Revisión del 5 de octubre de 2026 sobre Expo SDK 57, sin downgrades forzados.
 Auditoría repetida para backend 0.4.0 y frontend 0.6.0: backend 0;
 frontend **22 avisos**

@@ -1,5 +1,10 @@
 # Parte 2 — Base de datos
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 Registro histórico de la Parte 2. La importación posterior en XAMPP habitual
 y el login real están documentados en [operations.md](operations.md).
 

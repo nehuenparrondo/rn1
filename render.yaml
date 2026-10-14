@@ -36,6 +36,7 @@ services:
   - type: web
     name: np-access-web
     runtime: static
+    rootDir: frontend
     buildCommand: npm ci --include=dev && npm run build:web
     staticPublishPath: dist
     envVars:

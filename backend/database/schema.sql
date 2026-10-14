@@ -10,6 +10,7 @@ USE np_user_access;
 SET NAMES utf8mb4;
 SET time_zone = '+00:00';
 
+-- Catálogo de permisos: code es único; users referencia su identificador.
 CREATE TABLE roles (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   code VARCHAR(32) NOT NULL,
@@ -22,6 +23,8 @@ CREATE TABLE roles (
   DEFAULT CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
+-- Cuenta: email único, rol obligatorio y hash bcrypt; nunca contraseña en texto plano.
+-- is_active permite rechazar el acceso sin borrar la cuenta ni su historial.
 CREATE TABLE users (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   role_id INT UNSIGNED NOT NULL,
@@ -50,6 +53,8 @@ CREATE TABLE users (
   DEFAULT CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
+-- Auditoría de intentos: user_id admite NULL para emails inexistentes.
+-- Solo un usuario conocido puede tener success=1; attempted_at se interpreta en UTC.
 CREATE TABLE login_logs (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   user_id INT UNSIGNED NULL,

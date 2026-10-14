@@ -1,5 +1,10 @@
 # Guía de Git y colaboración
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 **Estado al cerrar la Parte 6:** repositorio local inicializado, HEAD apunta a master sin commits.
 No existe remoto; main, develop y feature/* son una guía, no ramas ya creadas.
 Estos comandos no se ejecutaron automáticamente. El ZIP no incluye .git/.

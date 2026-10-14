@@ -1,5 +1,10 @@
 # Hosting académico — Render + Aiven
 
+> **Estructura actual:** React Native en `frontend/` y Node.js en `backend/`,
+> cada uno con su propio `src/`. Para instalación y arranque usar el
+> [README actual](../README.md) y la [guía del código](codigo.md).
+> Los estados de entrega y árboles de etapas anteriores son históricos.
+
 **Estado:** código preparado, pero sin servicios/URL pública verificados todavía.
 El usuario confirmó que creó/inició sesión en ambas cuentas. Las sesiones dentro
 del navegador de Codex siguen pendientes de acceso; no se infiere conexión del plugin.
@@ -66,7 +71,7 @@ GET /api/health mantiene liveness HTTP. GET /api/ready verifica conexión SQL:
 | Campo               | Web                                       |
 | ------------------- | ----------------------------------------- |
 | Tipo                | Static Site                               |
-| Root directory      | raíz del repositorio                      |
+| Root directory      | frontend                                  |
 | Build               | npm ci --include=dev && npm run build:web |
 | Publish directory   | dist                                      |
 | EXPO_PUBLIC_API_URL | origen HTTPS real de la API, sin /api     |
