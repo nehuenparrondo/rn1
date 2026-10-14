@@ -7,7 +7,12 @@ const prettierConfig = require('eslint-config-prettier/flat');
 const tseslint = require('typescript-eslint');
 
 module.exports = defineConfig([
-  globalIgnores(['backend/**', 'dist/**', '.expo/**']),
+  globalIgnores([
+    'backend/**',
+    'dist/**',
+    '.expo/**',
+    'proyecto-2-componentes-nativos/**',
+  ]),
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

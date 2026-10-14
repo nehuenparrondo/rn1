@@ -1,4 +1,29 @@
-# Acceso de usuarios · NP
+# Trabajos React Native · NP
+
+Este repositorio reúne dos aplicaciones independientes. El proyecto 3 conserva su ubicación original en la raíz para no romper las rutas ni la configuración existentes.
+
+| Trabajo                                                                     | Carpeta                           | Requisitos                                                                    | Puerto Expo sugerido |
+| --------------------------------------------------------------------------- | --------------------------------- | ----------------------------------------------------------------------------- | -------------------- |
+| [Proyecto 2: componentes nativos](proyecto-2-componentes-nativos/README.md) | `proyecto-2-componentes-nativos/` | Node.js 24, npm y Expo Go compatible con SDK 57; sin backend ni base de datos | 8082                 |
+| Proyecto 3: acceso de usuarios                                              | Raíz de este repositorio          | Node.js 24, npm, API Express y MySQL/MariaDB                                  | 8083                 |
+
+## Abrir el proyecto 2 en otra computadora
+
+Clonar este repositorio o descargarlo con **Code → Download ZIP** y extraerlo. Desde la raíz:
+
+```powershell
+cd proyecto-2-componentes-nativos
+npm ci
+npx expo start --go --web --port 8082
+```
+
+Abrir la dirección web indicada y mantener la terminal abierta. Para el teléfono, usar el QR nuevo de esa PC. No copiar node_modules ni ejecutar desde el ZIP. Cada aplicación tiene sus propias dependencias: instalar en la raíz no instala el proyecto 2. Las demostraciones exclusivas de Android/iOS requieren el dispositivo correspondiente. Más detalles en el [README del proyecto 2](proyecto-2-componentes-nativos/README.md).
+
+## Abrir el proyecto 3
+
+Ejecutar sus comandos desde la raíz, no desde la carpeta del proyecto 2. Necesita instalar frontend y backend, configurar sus propios archivos .env e iniciar MySQL y la API; no basta con abrir Expo. La guía y los requisitos que siguen corresponden a ese trabajo.
+
+## Acceso de usuarios · NP
 
 Proyecto académico independiente: React Native + Expo + TypeScript, con API Node.js
 y base MySQL/MariaDB local mediante XAMPP, WAMP o LAMP.
@@ -6,7 +31,7 @@ y base MySQL/MariaDB local mediante XAMPP, WAMP o LAMP.
 > Estado: **seis partes documentadas y registro real agregado**, frontend 0.6.0.
 > Backend 0.4.0; XAMPP habitual configurado, registro/login/bienvenida comprobados en web.
 > GitHub publicado en main/develop. Pendientes: confirmar pruebas nativas y completar hosting.
-> Los proyectos 1 y 2 no se modifican.
+> Este apartado describe el proyecto 3; el proyecto 2 se ejecuta de manera independiente desde su propia carpeta.
 
 ## Ampliaciones actuales
 
